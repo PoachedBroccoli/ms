@@ -1,24 +1,9 @@
-# ms
+#### music？chat？toy
 
-## Project setup
-```
-npm install
-```
+---
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+##### 介绍
 
-### Compiles and minifies for production
-```
-npm run build
-```
+主要是为了学习前端写的玩具。关于聊天部分模仿别人的界面写的，但是功能还有很多没有实现。
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+看了原作者的代码，发现自己的代码是狗屎💩，反正要迭代，到时候全部重构。就当在这先记录一下。

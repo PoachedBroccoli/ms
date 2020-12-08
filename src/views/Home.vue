@@ -1,18 +1,35 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Header />
+    <Banner v-if="standBy" />
+    <Content v-if="standBy" />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import { Header, Banner, Content } from '@/components'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'Home',
   components: {
-    HelloWorld
+    Header,
+    Banner,
+    Content
+  },
+  created () {
+    this.a_carousel()
+  },
+  computed: {
+    ...mapState('music', {
+      standBy: 'standBy'
+    })
+  },
+  methods: {
+    ...mapActions('music', { a_carousel: 'a_carousel' }),
   }
 }
 </script>
+
+<style >
+</style>

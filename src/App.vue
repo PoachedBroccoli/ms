@@ -1,14 +1,13 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
 <style>
+@import url('https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.1/css/all.min.css');
+@import url('./assets/css/reset.css');
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -17,7 +16,7 @@
   color: #2c3e50;
 }
 
-#nav {
+/* #nav {
   padding: 30px;
 }
 
@@ -28,5 +27,5 @@
 
 #nav a.router-link-exact-active {
   color: #42b983;
-}
+} */
 </style>
