@@ -12,9 +12,6 @@ const auth = {
     },
     actions: {
         async a_enter ({ commit }, { status, nickname, number, room = 'Unknown' }) {
-            console.log(status)
-            console.log(nickname)
-            console.log(number)
             let data = await serve.getUser({ status, nickname, number })
             if (status) {
                 if (data.empty) {

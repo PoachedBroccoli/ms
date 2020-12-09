@@ -27,9 +27,9 @@ export default {
     ...mapState('chat', { room: 'room', flag: 'flag', ee: 'ee', doing: 'doing' })
   },
   created () {
-    console.log('出发了！！！！！！')
     // init('ws://127.0.0.1:8080/ws')
-    init('ws://www.pipiic.com:8080/ws')
+    // init('ws://www.pipiic.com:8080/ws')
+    init('wss://www.pipiic.com/websocket')
     window.addEventListener('onmessage', this.a_data)
   },
   mounted () {

@@ -5,7 +5,9 @@ import { db } from '../firebase'
 
 const serve = {
     // getCarousel: () => axios('http://localhost:3001/api/spider', {}),
-    getCarousel: () => axios('http://www.pipiic.com:3001/api/spider', {}),
+    // getCarousel: () => axios('http://www.pipiic.com:3001/api/spider', {}),
+    getCarousel: () => axios('https://www.pipiic.com/api/spider', {}),
+
     getRecordInfo: (key) => {
         return new Promise((resolve) => {
             jsonp(`https://itunes.apple.com/search?entry=music&media=music&term=${key}&limit=1`, null, (err, data) => {
