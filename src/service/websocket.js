@@ -1,34 +1,20 @@
 let socket = ''
-let setIntervalWesocketPush = null
 let _url = ''
 
 export const init = url => {
     _url = url
     socket && socket.close()
     if (!socket) {
-        console.log('建立websocket连接')
         socket = new WebSocket(url)
         socket.onopen = onopenWS
         socket.onmessage = onmessageWS
         socket.onerror = onerrorWS
         socket.onclose = oncloseWS
-    } else {
-        console.log('websocket已连接')
     }
 }
 
 const onopenWS = () => {
-    // sendPing()
-    console.log('open了')
 }
-
-// export const sendPing = (time = 50000, ping = 'ping') => {
-//     clearInterval(setIntervalWesocketPush)
-//     socket.send(JSON.stringify({ type: ping }))
-//     setIntervalWesocketPush = setInterval(() => {
-//         socket.send(ping)
-//     }, time)
-// }
 
 const onmessageWS = e => {
     window.dispatchEvent(new CustomEvent('onmessage', {
@@ -39,9 +25,7 @@ const onmessageWS = e => {
 }
 
 const onerrorWS = () => {
-    socket.close()
-    clearInterval(setIntervalWesocketPush)
-    console.log('连接失败重连中')
+    socket && socket.close()
     if (socket.readyState !== 3) {
         socket = null
         init(_url)
@@ -49,8 +33,6 @@ const onerrorWS = () => {
 }
 
 const oncloseWS = () => {
-    clearInterval(setIntervalWesocketPush)
-    console.log('websocket已断开....正在尝试重连')
     if (socket.readyState !== 2) {
         socket = null
         init(_url)
