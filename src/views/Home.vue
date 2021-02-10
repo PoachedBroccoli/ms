@@ -17,19 +17,16 @@ export default {
     Banner,
     Content
   },
-  created () {
+  created() {
     this.a_carousel()
   },
   computed: {
-    ...mapState('music', {
-      standBy: 'standBy'
-    })
+    ...mapState('music', { standBy: 'standBy' })
   },
   methods: {
-    ...mapActions('music', { a_carousel: 'a_carousel' }),
+    ...mapActions('music', { a_carousel: 'a_carousel' })
   }
 }
 </script>
 
-<style >
-</style>
+<style></style>

@@ -13,33 +13,37 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
-import { ChatInfoPanel, ChatGroupListPanel, ChatChatPanel } from '@/components/index'
+import {
+  ChatInfoPanel,
+  ChatGroupListPanel,
+  ChatChatPanel
+} from '@/components/index'
 import { init } from '@/service/websocket.js'
 
 export default {
   name: 'Chat',
   components: {
-    'ChatInfoPanel': ChatInfoPanel,
-    'ChatGroupListPanel': ChatGroupListPanel,
-    'ChatChatPanel': ChatChatPanel
+    ChatInfoPanel: ChatInfoPanel,
+    ChatGroupListPanel: ChatGroupListPanel,
+    ChatChatPanel: ChatChatPanel
   },
   computed: {
-    ...mapState('chat', { room: 'room', flag: 'flag', ee: 'ee', doing: 'doing' })
+    ...mapState('chat', {
+      room: 'room',
+      flag: 'flag',
+      ee: 'ee',
+      doing: 'doing'
+    })
   },
-  created () {
-    // init('ws://127.0.0.1:8080/ws')
-    // init('ws://www.pipiic.com:8080/ws')
+  created() {
     init('wss://www.pipiic.com/websocket')
     window.addEventListener('onmessage', this.a_data)
   },
-  mounted () {
-
-  },
+  mounted() {},
   methods: {
-    ...mapActions('chat', { a_data: 'a_data' }),
-
+    ...mapActions('chat', { a_data: 'a_data' })
   },
-  beforeDestroy () {
+  beforeDestroy() {
     window.removeEventListener('onmessage', this.a_data)
   }
 }

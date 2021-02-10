@@ -35,23 +35,21 @@ export default {
       default: 3000
     }
   },
-  data () {
+  data() {
     return {
       modifiedCarousel: [],
       currentInitial: 0,
       timer: null
     }
   },
-  created () {
+  created() {
     this.init()
   },
   computed: {
-    ...mapState('music', {
-      carousel: 'carousel'
-    })
+    ...mapState('music', { carousel: 'carousel' })
   },
   methods: {
-    init () {
+    init() {
       let source = this.carousel.slice(0)
       let diff = source.length - 5
       if (diff < 0) {
@@ -70,17 +68,17 @@ export default {
         this.autoPlay()
       }, 3000)
     },
-    stopTimer () {
+    stopTimer() {
       clearInterval(this.timer)
     },
-    startTimer () {
+    startTimer() {
       this.autoPlay()
     },
-    changeSlide (id) {
+    changeSlide(id) {
       this.currentInitial = id - 1
       this.modifiedCarousel = this.computed(id - 1, this.modifiedCarousel)
     },
-    autoPlay () {
+    autoPlay() {
       if (this.timer) {
         clearInterval(this.timer)
       }
@@ -92,13 +90,16 @@ export default {
           if (this.currentInitial >= this.modifiedCarousel.length) {
             this.currentInitial = 0
           }
-          this.modifiedCarousel = this.computed(this.currentInitial, this.modifiedCarousel)
+          this.modifiedCarousel = this.computed(
+            this.currentInitial,
+            this.modifiedCarousel
+          )
         }, this.interval)
       }
       autoPlay()
       this.timer = autoTimer
     },
-    computed (initial, source) {
+    computed(initial, source) {
       let len = source.length
       let temp1 = initial - 2
       let temp2 = initial - 1
@@ -107,7 +108,7 @@ export default {
       let temp5 = initial + 2
       temp1 < 0 ? (temp1 = len + temp1) : null
       temp2 < 0 ? (temp2 = len + temp2) : null
-      temp3 = temp3 < 0 ? 0 : (temp3 >= len) ? len - 1 : temp3
+      temp3 = temp3 < 0 ? 0 : temp3 >= len ? len - 1 : temp3
       temp4 >= len ? (temp4 = temp4 - len) : null
       temp5 >= len ? (temp5 = temp5 - len) : null
 

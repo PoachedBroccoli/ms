@@ -1,5 +1,5 @@
 import serve from '../service/api'
-import { htmlDecodeByRegExp } from '../utils/decode'
+import { htmlDecodeByRegExp } from '../util/decode'
 
 const music = {
     namespaced: true,

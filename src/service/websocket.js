@@ -1,4 +1,4 @@
-let socket = ''
+let socket = null
 let _url = ''
 
 export const init = url => {
